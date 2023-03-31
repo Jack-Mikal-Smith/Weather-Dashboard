@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- linking bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <title>Weather Dashboard</title>
+</head>
+<body>
+    <!-- added bootstrap navbar to hold wepage title -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand mx-auto" href="#">Navbar</a>
+        </div>
+      </nav>
+
+    <!-- added search input aside; also houses previous searches as buttons -->
+    <aside class="">
+        <input type="text" id="user-input">
+        <button id="search-btn">Search</button>
+        <h2>Recent Searches</h2>
+    </aside>
+
+    <!-- added a search results display section -->
+    <section id="results-display">
+        <!-- added container for current weather info -->
+        <div class="container" id="current-info">
+            <h3 id="city-name"></h3>
+            <p id="temp"></p>
+            <p id="wind-speed"></p>
+            <p id="humidity"></p>
+        </div>
+
+        <!-- added container class for five day forecast -->
+        <div class="container" id="five-day">
+
+        </div>
+    </section>
+
+    <!-- linked javaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
