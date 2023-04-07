@@ -10,43 +10,55 @@
     <title>Weather Dashboard</title>
 </head>
 
+<body>
+    
     <!-- added bootstrap navbar to hold wepage title -->
     <nav class="navbar navbar-expand-lg bg-info border-secondary border-3 rounded-3 mb-4 p-2">
         <div class="container-fluid">
           <a class="navbar-brand mx-auto">Weather Dashboard</a>
         </div>
-      </nav>
+    </nav>
 
     <!-- added search input aside; also houses previous searches as buttons -->
-    <aside class="container">
+    <div class="container">
         <div class="row">
             <div class="col">
-                <input class="text-bg-secondary p-3" id="user-input">
-                <button type="button" class="btn btn-info border-secondary border-2 rounded-2" id="search-btn">Search</button>
-            </div>
-            <div class="col"></div>
-                <h2>Recent Searches</h2>
-                <div id="recent-searches">
-                
+                <div class="row">
+                    <input class="text-bg-secondary p-3" id="user-input">
+                    <button type="button" class="btn btn-info border-secondary border-2 rounded-2" id="search-btn">Search</button>
                 </div>
-        </div>
-    </aside>
 
-    <!-- added a search results display section -->
-    <section id="results-display">
-        <!-- added container for current weather info -->
-        <div class="container" id="current-info">
-            <h3 id="city-name"></h3>
-            <p id="temp"></p>
-            <p id="wind-speed"></p>
-            <p id="humidity"></p>
-        </div>
+                <div class="row">
+                    <h2>Recent Searches</h2>
+                    <div id="recent-searches">
 
-        <!-- added container class for five day forecast -->
-        <div class="container" id="five-day">
+                    </div>
+                </div>
+                
+            </div>
 
+            <div class="col">
+            <!-- added a search results display section -->
+                <section id="results-display">
+                    <!-- added container for current weather info -->
+                    <div class="container" id="current-info">
+                        <h3 id="city-name"></h3>
+                        <p id="temp"></p>
+                        <p id="wind-speed"></p>
+                        <p id="humidity"></p>
+                    </div>
+
+                    <!-- added container class for five day forecast -->
+                    <div class="container" id="five-day">
+
+                    </div>
+                </section>
+
+            </div>
         </div>
-    </section>
+    </div>
+
+   
 
     <!-- linked javaScript -->
     <script src="script.js"></script>

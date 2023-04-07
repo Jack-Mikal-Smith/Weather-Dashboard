@@ -17,14 +17,10 @@ function getWeather(city) {
         return res.json();
     }).then(function(data) {
         console.log(data);
-        if (data.value === undefined) {
-            return;
-        } else {
-            document.querySelector('#city-name').innerText = data.name;
+            document.querySelector('#city-name').innerText = 'Currently in: ' + data.name;
             document.querySelector('#temp').innerText = 'Temp: ' + data.main.temp + ' F';
             document.querySelector('#wind-speed').innerText = 'Wind: ' + data.wind.speed + ' MPH';
             document.querySelector('#humidity').innerText = 'Humidity: ' + data.main.humidity + '%';
-        }
     });
     var urlFiveDay = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=7a9a82902161d2b14dc8da148668a60b&units=imperial';
     fetch(urlFiveDay).then(function(res) {
@@ -35,7 +31,7 @@ function getWeather(city) {
         for (i = 7; i < data.list.length; i = i+8) {
             console.log(data.list[i]);
             var date = document.createElement('h3');
-            date.innerText = city + ' on ' data.list[i].dt_txt + ':';
+            date.innerText = city + ' on: ' + data.list[i].dt_txt + ':';
             fiveDayOutput.appendChild(date);
             var temp = document.createElement('p');
             temp.innerText = 'Temp: ' + data.list[i].main.temp;
@@ -53,7 +49,7 @@ function getWeather(city) {
 // saveData function stores recently searched cities/ countires into local storage and calls the displayRecentSearches function
 function saveData(city) {
     var recentSearches = JSON.parse(localStorage.getItem('Cities')) || [];
-    if (city.value === undefined) {
+    if (city === '') {
         alert('Please review your input.')
         return;
     } else {
@@ -69,7 +65,7 @@ function displayRecentSearches(recentSearches) {
     searchesEl.innerHTML = '';
     for (i=0; i < recentSearches.length; i++) {
         var recentSearchBtn = document.createElement('button');
-        recentSearchBtn.setAttribute('class', '')
+        recentSearchBtn.setAttribute('class', '') // <---------- //
         recentSearchBtn.innerText = recentSearches[i];
         recentSearchBtn.addEventListener('click', function(event) {
             getWeather(event.target.innerText);
