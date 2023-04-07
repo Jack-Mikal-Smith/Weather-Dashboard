@@ -30,18 +30,21 @@ function getWeather(city) {
         fiveDayOutput.innerText = '';
         for (i = 7; i < data.list.length; i = i+8) {
             console.log(data.list[i]);
+            var card = document.createElement('row');           
             var date = document.createElement('h3');
             date.innerText = city + ' on: ' + data.list[i].dt_txt + ':';
-            fiveDayOutput.appendChild(date);
+            card.appendChild(date);
             var temp = document.createElement('p');
             temp.innerText = 'Temp: ' + data.list[i].main.temp;
-            fiveDayOutput.appendChild(temp);
+            card.appendChild(temp);
             var windSpeed = document.createElement('p');
             windSpeed.innerText = 'Wind: ' + data.list[i].wind.speed;
-            fiveDayOutput.appendChild(windSpeed);
+            card.appendChild(windSpeed);
             var icon = document.createElement('img');
             icon.src = 'https://openweathermap.org/img/wn/' + data.list[i].weather[0].icon + '@2x.png';
-            fiveDayOutput.append(icon);
+            card.appendChild(icon);
+            card.setAttribute('class', 'bg-info border-light border-2 rounded-2');
+            fiveDayOutput.appendChild(card);
         }
     })
 }   
@@ -64,13 +67,16 @@ function displayRecentSearches(recentSearches) {
     var searchesEl = document.querySelector('#recent-searches');
     searchesEl.innerHTML = '';
     for (i=0; i < recentSearches.length; i++) {
+        var recentSearchContain = document.createElement('div');
+        recentSearchContain.setAttribute('class', 'col')
         var recentSearchBtn = document.createElement('button');
-        recentSearchBtn.setAttribute('class', '') // <---------- //
+        recentSearchBtn.setAttribute('class', 'btn btn-outline-info my-1');
         recentSearchBtn.innerText = recentSearches[i];
         recentSearchBtn.addEventListener('click', function(event) {
             getWeather(event.target.innerText);
         });
-        searchesEl.appendChild(recentSearchBtn);
+        recentSearchContain.appendChild(recentSearchBtn);
+        searchesEl.appendChild(recentSearchContain);
     }
 }
 
